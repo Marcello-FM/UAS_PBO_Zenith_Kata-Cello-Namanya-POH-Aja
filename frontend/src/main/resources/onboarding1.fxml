@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.zenith.frontend.Onboarding1Controller"
+           prefWidth="1280" prefHeight="720"
+           style="-fx-background-color: #1a3a4a;">
+
+    <HBox prefWidth="1280" prefHeight="720">
+
+        <VBox prefWidth="580" prefHeight="720"
+              alignment="TOP_LEFT"
+              style="-fx-padding: 40 60 40 60; -fx-background-color: #1a3a4a;">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fitWidth="48" fitHeight="48" preserveRatio="true">
+                    <image><Image url="@/images/Zenith_Logo.png"/></image>
+                </ImageView>
+            </HBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Label fx:id="headingLine1" text="Manage Your Stress"
+                   wrapText="true"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 42px;
+                          -fx-font-weight: bold;"/>
+            <Label fx:id="headingLine2" text="With Ease"
+                   wrapText="true"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 42px;
+                          -fx-font-weight: bold;"/>
+
+            <Region prefHeight="18"/>
+
+            <Label fx:id="subtitle" text="Your Personal Companion For Clarity"
+                   wrapText="true"
+                   style="-fx-text-fill: #b0c8d4;
+                          -fx-font-size: 16px;"/>
+
+            <Region prefHeight="40"/>
+
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Rectangle fx:id="dot0" width="32" height="9" arcWidth="9" arcHeight="9" fill="#7dd8f0"/>
+                <Rectangle fx:id="dot1" width="9"  height="9" arcWidth="9" arcHeight="9" fill="#3a6070"/>
+                <Rectangle fx:id="dot2" width="9"  height="9" arcWidth="9" arcHeight="9" fill="#3a6070"/>
+                <Rectangle fx:id="dot3" width="9"  height="9" arcWidth="9" arcHeight="9" fill="#3a6070"/>
+            </HBox>
+
+            <Region prefHeight="36"/>
+
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <Button fx:id="nextButton" text="Next  ›"
+                        prefWidth="200" prefHeight="52"
+                        onAction="#handleNext"
+                        style="-fx-background-color: #7dd8f0;
+                               -fx-text-fill: #1a3a4a;
+                               -fx-font-size: 16px;
+                               -fx-font-weight: bold;
+                               -fx-background-radius: 28;
+                               -fx-cursor: hand;
+                               -fx-border-color: transparent;"/>
+                <Button fx:id="skipButton" text="Skip"
+                        onAction="#handleSkip"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #b0c8d4;
+                               -fx-font-size: 15px;
+                               -fx-cursor: hand;
+                               -fx-border-color: transparent;"/>
+            </HBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+        </VBox>
+
+        <StackPane HBox.hgrow="ALWAYS"
+                   style="-fx-background-color: #142e3e;">
+            <ImageView fx:id="centerImage"
+                       fitWidth="420" fitHeight="420"
+                       preserveRatio="true"
+                       StackPane.alignment="CENTER">
+                <image><Image url="@/images/meditation.png"/></image>
+            </ImageView>
+        </StackPane>
+
+    </HBox>
+
+</StackPane>
