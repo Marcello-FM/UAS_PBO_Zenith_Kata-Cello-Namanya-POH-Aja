@@ -1,13 +1,10 @@
 package com.zenith.frontend;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -22,19 +19,14 @@ public class LoginController {
     @FXML
     private void togglePasswordVisibility() {
         if (passwordShown) {
-            // hide: copy text back to PasswordField, show it, hide plain TextField
             passwordField.setText(passwordVisible.getText());
-            passwordField.setVisible(true);
-            passwordField.setManaged(true);
-            passwordVisible.setVisible(false);
-            passwordVisible.setManaged(false);
+            passwordField.setVisible(true);    passwordField.setManaged(true);
+            passwordVisible.setVisible(false); passwordVisible.setManaged(false);
             eyeButton.setText("👁");
         } else {
             passwordVisible.setText(passwordField.getText());
-            passwordVisible.setVisible(true);
-            passwordVisible.setManaged(true);
-            passwordField.setVisible(false);
-            passwordField.setManaged(false);
+            passwordVisible.setVisible(true);  passwordVisible.setManaged(true);
+            passwordField.setVisible(false);   passwordField.setManaged(false);
             eyeButton.setText("🙈");
         }
         passwordShown = !passwordShown;
@@ -62,13 +54,7 @@ public class LoginController {
 
     @FXML
     private void handleRegister() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/register.fxml"));
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(new Scene(root, 1280, 720));
-        } catch (Exception e) {
-            // register screen not yet created
-            System.out.println("Register screen not yet implemented.");
-        }
+        Parent root = loginButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/register.fxml", root, 60);
     }
 }

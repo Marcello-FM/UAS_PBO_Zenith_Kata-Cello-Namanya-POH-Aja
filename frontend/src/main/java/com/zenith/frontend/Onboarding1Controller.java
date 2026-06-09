@@ -10,6 +10,7 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -73,7 +74,9 @@ public class Onboarding1Controller {
     @FXML
     private void handleNext() {
         if (currentPage >= IMAGES.length - 1) {
-            SceneNavigator.navigateTo("/login.fxml");
+            // Get Started — animate out to login
+            Parent root = nextButton.getScene().getRoot();
+            SceneNavigator.navigateWithAnimation("/login.fxml", root);
             return;
         }
 
@@ -137,7 +140,8 @@ public class Onboarding1Controller {
 
     @FXML
     private void handleSkip() {
-        SceneNavigator.navigateTo("/login.fxml");
+        Parent root = skipButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/login.fxml", root);
     }
 
     private FadeTransition fade(javafx.scene.Node node, Duration dur, double from, double to) {
