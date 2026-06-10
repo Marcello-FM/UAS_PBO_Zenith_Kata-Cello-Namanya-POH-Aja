@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.zenith.frontend.QuestionController"
+      prefWidth="1280" prefHeight="720"
+      style="-fx-background-color: #1a3a4a;">
+
+    <VBox prefWidth="360" prefHeight="720"
+          alignment="CENTER"
+          style="-fx-background-color: #142e3e; -fx-padding: 48 36 48 36;"
+          spacing="20">
+
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+            <image><Image url="@/images/Zenith_Logo.png"/></image>
+        </ImageView>
+
+        <Label text="Stress Assessment"
+               style="-fx-text-fill: white;
+                      -fx-font-size: 20px;
+                      -fx-font-weight: bold;"/>
+
+        <Label text="Answer honestly for the&#10;most accurate results."
+               wrapText="true"
+               textAlignment="CENTER"
+               style="-fx-text-fill: #b0c8d4;
+                      -fx-font-size: 13px;
+                      -fx-alignment: center;"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Label fx:id="sideProgressLabel"
+               text="Question 1 of 5"
+               style="-fx-text-fill: #7dd8f0; -fx-font-size: 13px;"/>
+
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" prefHeight="720"
+          style="-fx-background-color: #f0f4f8; -fx-padding: 48 64 40 64;"
+          spacing="0">
+
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="progressLabel" text="Question 1 of 5"
+                   style="-fx-text-fill: #8aabb8; -fx-font-size: 13px;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="progressPercent" text="20%"
+                   style="-fx-text-fill: #8aabb8; -fx-font-size: 13px;"/>
+            <Region prefWidth="16"/>
+            <Button fx:id="exitButton" text="Exit"
+                    onAction="#handleExit"
+                    style="-fx-background-color: #ffe0e0;
+                           -fx-text-fill: #c62828;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 10;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent;
+                           -fx-padding: 4 12 4 12;"/>
+        </HBox>
+
+        <Region prefHeight="8"/>
+
+        <StackPane fx:id="progressTrack" prefHeight="6" maxHeight="6">
+            <Region style="-fx-background-color: #d8e4ec;
+                           -fx-background-radius: 3;"
+                    prefHeight="6"
+                    StackPane.alignment="CENTER_LEFT"/>
+            <Region fx:id="progressFillRegion"
+                    style="-fx-background-color: #1a3a4a;
+                           -fx-background-radius: 3;"
+                    prefHeight="6" prefWidth="0"
+                    maxHeight="6"
+                    StackPane.alignment="CENTER_LEFT"/>
+        </StackPane>
+
+        <Region prefHeight="36"/>
+
+        <Label fx:id="questionLabel"
+               text="How often have you felt stressed in the past week?"
+               wrapText="true"
+               style="-fx-font-size: 22px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #1a3a4a;"/>
+
+        <Region prefHeight="28"/>
+
+        <VBox fx:id="answersBox" spacing="12" fillWidth="true">
+
+            <ToggleButton fx:id="opt0" text="Never"
+                          prefHeight="52"
+                          maxWidth="Infinity"
+                          onAction="#handleOptionSelected"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-font-size: 15px;
+                                 -fx-text-fill: #1a3a4a;
+                                 -fx-alignment: CENTER_LEFT;
+                                 -fx-padding: 0 20 0 20;
+                                 -fx-cursor: hand;
+                                 -fx-border-color: transparent;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,2);"/>
+
+            <ToggleButton fx:id="opt1" text="Rarely"
+                          prefHeight="52"
+                          maxWidth="Infinity"
+                          onAction="#handleOptionSelected"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-font-size: 15px;
+                                 -fx-text-fill: #1a3a4a;
+                                 -fx-alignment: CENTER_LEFT;
+                                 -fx-padding: 0 20 0 20;
+                                 -fx-cursor: hand;
+                                 -fx-border-color: transparent;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,2);"/>
+
+            <ToggleButton fx:id="opt2" text="Sometimes"
+                          prefHeight="52"
+                          maxWidth="Infinity"
+                          onAction="#handleOptionSelected"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-font-size: 15px;
+                                 -fx-text-fill: #1a3a4a;
+                                 -fx-alignment: CENTER_LEFT;
+                                 -fx-padding: 0 20 0 20;
+                                 -fx-cursor: hand;
+                                 -fx-border-color: transparent;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,2);"/>
+
+            <ToggleButton fx:id="opt3" text="Often"
+                          prefHeight="52"
+                          maxWidth="Infinity"
+                          onAction="#handleOptionSelected"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-font-size: 15px;
+                                 -fx-text-fill: #1a3a4a;
+                                 -fx-alignment: CENTER_LEFT;
+                                 -fx-padding: 0 20 0 20;
+                                 -fx-cursor: hand;
+                                 -fx-border-color: transparent;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,2);"/>
+
+            <ToggleButton fx:id="opt4" text="Always"
+                          prefHeight="52"
+                          maxWidth="Infinity"
+                          onAction="#handleOptionSelected"
+                          style="-fx-background-color: white;
+                                 -fx-background-radius: 14;
+                                 -fx-font-size: 15px;
+                                 -fx-text-fill: #1a3a4a;
+                                 -fx-alignment: CENTER_LEFT;
+                                 -fx-padding: 0 20 0 20;
+                                 -fx-cursor: hand;
+                                 -fx-border-color: transparent;
+                                 -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),6,0,0,2);"/>
+
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <HBox spacing="16" alignment="CENTER_LEFT">
+
+            <Button fx:id="backButton" text="&#8592;  Back"
+                    onAction="#handleBack"
+                    prefHeight="52" prefWidth="140"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #8aabb8;
+                           -fx-font-size: 15px;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent;"/>
+
+            <Button fx:id="nextButton" text="Next  &#8594;"
+                    onAction="#handleNext"
+                    prefHeight="52" prefWidth="240"
+                    disable="true"
+                    style="-fx-background-color: #546e7a;
+                           -fx-text-fill: white;
+                           -fx-font-size: 15px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 14;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent;
+                           -fx-opacity: 0.5;"/>
+
+        </HBox>
+    </VBox>
+</HBox>

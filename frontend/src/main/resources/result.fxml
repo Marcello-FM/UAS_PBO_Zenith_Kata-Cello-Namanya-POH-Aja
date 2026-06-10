@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.zenith.frontend.ResultController"
+      prefWidth="1280" prefHeight="720"
+      style="-fx-background-color: #f0f4f8;">
+
+    <VBox prefWidth="360" prefHeight="720"
+          alignment="CENTER"
+          style="-fx-background-color: #1a3a4a; -fx-padding: 48 36 48 36;"
+          spacing="20">
+
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+            <image><Image url="@/images/Zenith_Logo.png"/></image>
+        </ImageView>
+
+        <Label text="Assessment&#10;Complete"
+               textAlignment="CENTER"
+               style="-fx-text-fill: white;
+                      -fx-font-size: 22px;
+                      -fx-font-weight: bold;
+                      -fx-alignment: center;"/>
+
+        <Label text="Here are your results&#10;based on your answers."
+               wrapText="true"
+               textAlignment="CENTER"
+               style="-fx-text-fill: #b0c8d4;
+                      -fx-font-size: 13px;
+                      -fx-alignment: center;"/>
+
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" prefHeight="720"
+          alignment="CENTER"
+          style="-fx-background-color: #f0f4f8; -fx-padding: 40 64 40 64;"
+          spacing="0">
+
+        <HBox alignment="CENTER_LEFT" prefWidth="10000">
+            <Button fx:id="backButton" text="&#8249;  Back"
+                    onAction="#handleBack"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #1a3a4a;
+                           -fx-font-size: 18px;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent;
+                           -fx-padding: 4 0 4 0;"/>
+        </HBox>
+
+        <Region prefHeight="20"/>
+
+        <VBox alignment="CENTER" spacing="12"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 20;
+                     -fx-padding: 36 40 36 40;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.09), 14, 0, 0, 4);">
+
+            <Label fx:id="resultEmoji" text="😊"
+                   style="-fx-font-size: 56px;"/>
+
+            <Label fx:id="resultLevel" text="Low Stress"
+                   style="-fx-font-size: 26px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #1a3a4a;"/>
+
+            <Label fx:id="resultDesc" text="There is little stress present, you are peaceful."
+                   wrapText="true"
+                   textAlignment="CENTER"
+                   style="-fx-font-size: 14px;
+                          -fx-text-fill: #5a7a8a;
+                          -fx-alignment: center;"
+                   maxWidth="400"/>
+
+            <Label fx:id="resultScore" text="6"
+                   style="-fx-font-size: 40px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #1a3a4a;"/>
+
+            <Label text="Stress score (out of 25)"
+                   style="-fx-font-size: 13px;
+                          -fx-text-fill: #8aabb8;"/>
+
+        </VBox>
+
+        <Region prefHeight="24"/>
+
+        <VBox spacing="16"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 20;
+                     -fx-padding: 28 36 28 36;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 10, 0, 0, 3);">
+
+            <Label text="Recommendations for You"
+                   style="-fx-font-size: 16px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #1a3a4a;"/>
+
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <Label fx:id="rec1Icon" text="🎮"
+                       style="-fx-font-size: 26px;"/>
+                <VBox spacing="2">
+                    <Label fx:id="rec1Title" text="Play our relaxation games"
+                           style="-fx-font-size: 14px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #1a3a4a;"/>
+                    <Label fx:id="rec1Desc" text="Try our fun yet relaxing games"
+                           style="-fx-font-size: 12px;
+                                  -fx-text-fill: #8aabb8;"/>
+                </VBox>
+            </HBox>
+
+            <Separator/>
+
+            <HBox spacing="16" alignment="CENTER_LEFT">
+                <Label fx:id="rec2Icon" text="📊"
+                       style="-fx-font-size: 26px;"/>
+                <VBox spacing="2">
+                    <Label fx:id="rec2Title" text="Track your progress"
+                           style="-fx-font-size: 14px;
+                                  -fx-font-weight: bold;
+                                  -fx-text-fill: #1a3a4a;"/>
+                    <Label fx:id="rec2Desc" text="Regular assessments help identify patterns"
+                           style="-fx-font-size: 12px;
+                                  -fx-text-fill: #8aabb8;"/>
+                </VBox>
+            </HBox>
+
+        </VBox>
+
+        <Region prefHeight="28"/>
+
+        <Button fx:id="progressButton" text="View my progress"
+                prefHeight="52" prefWidth="400"
+                onAction="#handleViewProgress"
+                style="-fx-background-color: #1a3a4a;
+                       -fx-text-fill: white;
+                       -fx-font-size: 16px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 28;
+                       -fx-cursor: hand;
+                       -fx-border-color: transparent;"/>
+
+    </VBox>
+</HBox>

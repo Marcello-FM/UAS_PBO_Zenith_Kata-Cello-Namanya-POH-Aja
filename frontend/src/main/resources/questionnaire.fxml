@@ -1,82 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane stylesheets="@styles/dashboard.css" styleClass="root-pane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zenith.frontend.QuestionnaireController">
-    <children>
-        <VBox layoutX="240.0" layoutY="60.0" prefHeight="600.0" prefWidth="800.0" spacing="25.0" styleClass="center-box">
-            <padding>
-                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-            </padding>
-            <children>
-                <BorderPane prefWidth="720.0">
-                    <left>
-                        <Label text="Kuisioner Mental" textFill="#7dd8f0" BorderPane.alignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="26.0" />
-                            </font>
-                        </Label>
-                    </left>
-                    <right>
-                        <VBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
-                            <children>
-                                <Label fx:id="progressLabel" text="1 / 5" textFill="#888888">
-                                    <font>
-                                        <Font name="System Bold" size="14.0" />
-                                    </font>
-                                </Label>
-                                <ProgressBar fx:id="progressBar" prefHeight="10.0" prefWidth="150.0" progress="0.2" style="-fx-accent: #7dd8f0; -fx-control-inner-background: #1f3b4d;" />
-                            </children>
-                        </VBox>
-                    </right>
-                </BorderPane>
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.zenith.frontend.QuestionnaireController"
+      prefWidth="1280" prefHeight="720"
+      style="-fx-background-color: #1a3a4a;">
 
-                <Region prefHeight="2.0" style="-fx-background-color: #1f3b4d; -fx-background-radius: 2;" />
+    <StackPane prefWidth="480"
+               style="-fx-background-color: #142e3e;">
 
-                <VBox alignment="CENTER" prefHeight="160.0" style="-fx-background-color: #1f3b4d; -fx-background-radius: 15; -fx-border-color: #2a4b61; -fx-border-radius: 15; -fx-border-width: 2;">
-                    <padding>
-                        <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
-                    </padding>
-                    <children>
-                        <Label fx:id="questionLabel" text="Memuat pertanyaan..." textFill="WHITE" wrapText="true" textAlignment="CENTER">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
+        <ImageView fitWidth="320" fitHeight="320"
+                   preserveRatio="true" opacity="0.10">
+            <image><Image url="@/images/Zenith_Logo.png"/></image>
+        </ImageView>
 
-                <GridPane alignment="CENTER" hgap="20.0" vgap="20.0">
-                    <columnConstraints>
-                        <ColumnConstraints percentWidth="50.0" />
-                        <ColumnConstraints percentWidth="50.0" />
-                    </columnConstraints>
-                    <children>
-                        <Button fx:id="option1Button" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleOption1" prefHeight="65.0" styleClass="menu-button" text="Tidak Pernah" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Button fx:id="option2Button" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleOption2" prefHeight="65.0" styleClass="menu-button" text="Kadang-kadang" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                        <Button fx:id="option3Button" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleOption3" prefHeight="65.0" styleClass="menu-button" text="Sering" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <Button fx:id="option4Button" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleOption4" prefHeight="65.0" styleClass="menu-button" text="Hampir Selalu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    </children>
-                </GridPane>
+        <VBox alignment="CENTER" spacing="20">
+            <StackPane prefWidth="120" prefHeight="120">
+                <Circle radius="55"
+                        fill="transparent"
+                        stroke="#f5c842"
+                        strokeWidth="4"/>
+                <Label text="?"
+                       style="-fx-font-size: 64px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #f5c842;"/>
+            </StackPane>
 
-                <Region VBox.vgrow="ALWAYS" />
+            <Label text="Stress Assessment"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 28px;
+                          -fx-font-weight: bold;"/>
 
-                <VBox alignment="CENTER">
-                    <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack" prefHeight="40.0" prefWidth="250.0" styleClass="logout-button" text="Batalkan &amp; Kembali" />
-                    </children>
-                </VBox>
-            </children>
+            <Label text="Answer a few quick questions to understand&#10;your current stress level and get&#10;personalized recommendations."
+                   wrapText="true"
+                   textAlignment="CENTER"
+                   style="-fx-text-fill: #b0c8d4;
+                          -fx-font-size: 14px;
+                          -fx-alignment: center;"
+                   maxWidth="360"/>
         </VBox>
-    </children>
-</AnchorPane>
+    </StackPane>
+
+    <VBox HBox.hgrow="ALWAYS"
+          alignment="CENTER"
+          style="-fx-padding: 60 80 60 80; -fx-background-color: #1a3a4a;"
+          spacing="0">
+
+        <HBox alignment="CENTER_LEFT">
+            <Button fx:id="backButton" text="&#8249;  Back"
+                    onAction="#handleBack"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #b0c8d4;
+                           -fx-font-size: 18px;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent;
+                           -fx-padding: 4 0 4 0;"/>
+        </HBox>
+
+        <Region prefHeight="32"/>
+
+        <VBox spacing="16"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 20;
+                     -fx-padding: 32 36 32 36;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 16, 0, 0, 4);">
+
+            <Label text="What to expect:"
+                   style="-fx-font-size: 16px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #1a3a4a;"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Circle radius="4" fill="#7dd8f0"/>
+                <Label text="5 simple questions about your recent wellbeing"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2a5a6a;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Circle radius="4" fill="#7dd8f0"/>
+                <Label text="It takes about 2 minutes to complete"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2a5a6a;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Circle radius="4" fill="#7dd8f0"/>
+                <Label text="Personalized insights and recommendations"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2a5a6a;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Circle radius="4" fill="#7dd8f0"/>
+                <Label text="Track your progress overtime"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2a5a6a;"/>
+            </HBox>
+        </VBox>
+
+        <Region prefHeight="48"/>
+
+        <Button fx:id="startButton" text="Start Assessment"
+                prefWidth="400" prefHeight="54"
+                onAction="#handleStart"
+                style="-fx-background-color: #f5c842;
+                       -fx-text-fill: #1a3a4a;
+                       -fx-font-size: 17px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 28;
+                       -fx-cursor: hand;
+                       -fx-border-color: transparent;"/>
+    </VBox>
+</HBox>
