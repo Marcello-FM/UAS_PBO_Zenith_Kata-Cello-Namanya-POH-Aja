@@ -2,43 +2,46 @@ package com.zenith.frontend;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class DashboardController {
 
-    @FXML private Label welcomeLabel;
-    @FXML private Button relaxationButton;
-    @FXML private Button questionnaireButton;
-    @FXML private Button historyButton;
-    @FXML private Button logoutButton;
+    @FXML private HBox navHome;
+    @FXML private HBox navRelax;
+    @FXML private HBox navStats;
+    @FXML private HBox navProfile;
+    @FXML private HBox navLogout;
+
+    @FXML private VBox cardStressCheck;
+    @FXML private VBox cardMyProgress;
+    @FXML private VBox cardRelax;
+    @FXML private VBox cardGames;
 
     @FXML
-    private void initialize() {
-        welcomeLabel.setText("Zenith Dashboard");
+    private void handleLogout() {
+        Parent root = navLogout.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
     }
 
     @FXML
-    private void handleRelaxation() {
-        Parent root = relaxationButton.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/relaxation.fxml", root, 60);
-    }
-
-    @FXML
-    private void handleQuestionnaire() {
-        Parent root = questionnaireButton.getScene().getRoot();
+    private void handleStressCheck() {
+        Parent root = cardStressCheck.getScene().getRoot();
         SceneNavigator.navigateWithAnimation("/questionnaire.fxml", root, 60);
     }
 
     @FXML
-    private void handleHistory() {
-        Parent root = historyButton.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/history.fxml", root, 60);
+    private void handleMyProgress() {
+        System.out.println("My Progress");
     }
 
     @FXML
-    private void handleLogout() {
-        Parent root = logoutButton.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
+    private void handleRelax() {
+        System.out.println("Relax & Calm");
+    }
+
+    @FXML
+    private void handleCalmingGames() {
+        System.out.println("Calming Games");
     }
 }

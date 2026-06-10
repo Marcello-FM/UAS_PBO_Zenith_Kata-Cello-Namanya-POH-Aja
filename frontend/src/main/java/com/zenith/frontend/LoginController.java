@@ -50,7 +50,8 @@ public class LoginController {
 
     @FXML
     private void handleForgotPassword() {
-        System.out.println("Forgot password");
+        Parent root = loginButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/forgot_password.fxml", root, 60);
     }
 
     @FXML

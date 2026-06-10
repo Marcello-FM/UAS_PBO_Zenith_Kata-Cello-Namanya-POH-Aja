@@ -7,7 +7,9 @@ import javafx.animation.KeyValue;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -37,51 +39,60 @@ public class SceneNavigator {
 
     public static void navigateWithAnimation(String fxmlPath, Parent currentRoot, double slideFromX) {
 
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(280), currentRoot);
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(220), currentRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
         fadeOut.setInterpolator(Interpolator.EASE_IN);
 
-        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(280), currentRoot);
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(220), currentRoot);
         scaleOut.setFromX(1.0); scaleOut.setFromY(1.0);
-        scaleOut.setToX(slideFromX > 0 ? 1.04 : 0.96);
-        scaleOut.setToY(slideFromX > 0 ? 1.04 : 0.96);
+        double scaleTarget = slideFromX > 0 ? 1.03 : 0.97;
+        scaleOut.setToX(scaleTarget); scaleOut.setToY(scaleTarget);
         scaleOut.setInterpolator(Interpolator.EASE_IN);
 
-        ParallelTransition phaseA = new ParallelTransition(fadeOut, scaleOut);
+
+        final Parent[] newRootHolder = new Parent[1];
+        Thread loader = new Thread(() -> {
+            try {
+                Parent loaded = FXMLLoader.load(SceneNavigator.class.getResource(fxmlPath));
+                loaded.setOpacity(0.0);
+                loaded.setTranslateX(slideFromX);
+                newRootHolder[0] = loaded;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        loader.setDaemon(true);
+        loader.start();
 
         phaseA.setOnFinished(e -> {
-            try {
-                Parent newRoot = FXMLLoader.load(
-                    SceneNavigator.class.getResource(fxmlPath)
-                );
+            try { loader.join(500); } catch (InterruptedException ignored) {}
 
-                newRoot.setOpacity(0.0);
-                newRoot.setTranslateX(slideFromX);
+            Parent newRoot = newRootHolder[0];
+            if (newRoot == null) return;
 
-                primaryStage.setScene(new Scene(newRoot, 1280, 720));
+            Scene newScene = new Scene(newRoot, 1280, 720);
+            newScene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+
+            Platform.runLater(() -> {
+                primaryStage.setScene(newScene);
                 primaryStage.show();
 
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(380), newRoot);
+                FadeTransition fadeIn = new FadeTransition(Duration.millis(320), newRoot);
                 fadeIn.setFromValue(0.0);
                 fadeIn.setToValue(1.0);
                 fadeIn.setInterpolator(Interpolator.EASE_OUT);
 
                 Timeline slideIn = new Timeline(
                     new KeyFrame(Duration.ZERO,
-                        new KeyValue(newRoot.translateXProperty(), slideFromX)
-                    ),
-                    new KeyFrame(Duration.millis(380),
+                        new KeyValue(newRoot.translateXProperty(), slideFromX)),
+                    new KeyFrame(Duration.millis(320),
                         new KeyValue(newRoot.translateXProperty(), 0.0,
-                                     Interpolator.EASE_OUT)
-                    )
+                                     Interpolator.EASE_OUT))
                 );
 
                 new ParallelTransition(fadeIn, slideIn).play();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            });
         });
 
         phaseA.play();
