@@ -9,7 +9,6 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -50,6 +49,7 @@ public class SceneNavigator {
         scaleOut.setToX(scaleTarget); scaleOut.setToY(scaleTarget);
         scaleOut.setInterpolator(Interpolator.EASE_IN);
 
+        ParallelTransition phaseA = new ParallelTransition(fadeOut, scaleOut);
 
         final Parent[] newRootHolder = new Parent[1];
         Thread loader = new Thread(() -> {
@@ -72,7 +72,7 @@ public class SceneNavigator {
             if (newRoot == null) return;
 
             Scene newScene = new Scene(newRoot, 1280, 720);
-            newScene.setFill(javafx.scene.paint.Color.TRANSPARENT);
+            newScene.setFill(javafx.scene.paint.Color.web("#1a3a4a"));
 
             Platform.runLater(() -> {
                 primaryStage.setScene(newScene);

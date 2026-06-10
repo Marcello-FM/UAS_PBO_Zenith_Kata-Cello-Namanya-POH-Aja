@@ -159,8 +159,9 @@
                         <StackPane prefWidth="48" prefHeight="48"
                                    style="-fx-background-color: #a8d4ed;
                                           -fx-background-radius: 12;">
-                            <Label text="☑"
-                                   style="-fx-font-size: 22px; -fx-text-fill: #1a3a4a;"/>
+                            <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
+                                <image><Image url="@/images/bi_card-checklist.png"/></image>
+                            </ImageView>
                         </StackPane>
                         <Label text="Stress Check"
                                style="-fx-font-size: 16px;
@@ -185,8 +186,9 @@
                         <StackPane prefWidth="48" prefHeight="48"
                                    style="-fx-background-color: #c0a8e8;
                                           -fx-background-radius: 12;">
-                            <Label text="📈"
-                                   style="-fx-font-size: 22px; -fx-text-fill: #1a3a4a;"/>
+                            <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
+                                <image><Image url="@/images/icon-park-outline_trend.png"/></image>
+                            </ImageView>
                         </StackPane>
                         <Label text="My Progress"
                                style="-fx-font-size: 16px;
@@ -215,8 +217,9 @@
                         <StackPane prefWidth="48" prefHeight="48"
                                    style="-fx-background-color: #e0d870;
                                           -fx-background-radius: 12;">
-                            <Label text="🧘"
-                                   style="-fx-font-size: 22px; -fx-text-fill: #1a3a4a;"/>
+                            <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
+                                <image><Image url="@/images/mdi_meditation.png"/></image>
+                            </ImageView>
                         </StackPane>
                         <Label text="Relax &amp; Calm"
                                style="-fx-font-size: 16px;
@@ -241,8 +244,9 @@
                         <StackPane prefWidth="48" prefHeight="48"
                                    style="-fx-background-color: #60e060;
                                           -fx-background-radius: 12;">
-                            <Label text="🎮"
-                                   style="-fx-font-size: 22px; -fx-text-fill: #1a3a4a;"/>
+                            <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
+                                <image><Image url="@/images/fluent-mdl2_game.png"/></image>
+                            </ImageView>
                         </StackPane>
                         <Label text="Calming Games"
                                style="-fx-font-size: 16px;
