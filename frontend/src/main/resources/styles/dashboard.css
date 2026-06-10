@@ -1,0 +1,37 @@
+.root-pane {
+    -fx-background-color: #1f3b4d;
+}
+
+.center-box {
+    -fx-background-color: #152a38;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 8);
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #7dd8f0;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+    -fx-text-fill: #7dd8f0;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #7dd8f0;
+    -fx-text-fill: #152a38;
+    -fx-background-radius: 25;
+}
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #888888;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-text-fill: #ff4c4c;
+}

@@ -44,7 +44,8 @@ public class LoginController {
             return;
         }
 
-        System.out.println("Logging in: " + email);
+        Parent root = loginButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/dashboard.fxml", root, 60);
     }
 
     @FXML
