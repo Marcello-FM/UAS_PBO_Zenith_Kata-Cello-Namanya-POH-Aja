@@ -37,11 +37,13 @@ public class DashboardController {
 
     @FXML
     private void handleRelax() {
-        System.out.println("Relax & Calm");
+        Parent root = cardRelax.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/relax_calm.fxml", root, 60);
     }
 
     @FXML
     private void handleCalmingGames() {
-        System.out.println("Calming Games");
+        Parent root = cardGames.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/calming_games.fxml", root, 60);
     }
 }

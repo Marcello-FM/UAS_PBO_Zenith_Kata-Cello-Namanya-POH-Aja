@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.zenith.frontend.RelaxCalmController"
+      prefWidth="1280" prefHeight="720"
+      stylesheets="@/styles/dashboard.css"
+      style="-fx-background-color: #f0f4f8;">
+
+    <VBox prefWidth="220" prefHeight="720"
+          alignment="TOP_CENTER"
+          style="-fx-background-color: #1a3a4a; -fx-padding: 28 0 28 0;">
+
+        <ImageView fitWidth="64" fitHeight="64" preserveRatio="true">
+            <image><Image url="@/images/Zenith_Logo.png"/></image>
+        </ImageView>
+
+        <Region prefHeight="32"/>
+
+        <HBox fx:id="navHome" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleHome" styleClass="sidebar-hover"
+              style="-fx-padding: 0 0 0 28;">
+            <Label text="⌂" style="-fx-font-size: 20px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Home" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              style="-fx-background-color: #7dd8f0; -fx-padding: 0 0 0 28; -fx-cursor: hand;">
+            <Label text="🧘" style="-fx-font-size: 18px; -fx-text-fill: #1a3a4a;"/>
+            <Label text="  Relax" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox fx:id="navGames" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleCalmingGames" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="🎮" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Games" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="📊" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Statistics" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="👤" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Profile" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <HBox fx:id="navLogout" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleLogout" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="🚪" style="-fx-font-size: 18px; -fx-text-fill: #e88;"/>
+            <Label text="  Logout" style="-fx-font-size: 14px; -fx-text-fill: #e88;"/>
+        </HBox>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" spacing="10" style="-fx-padding: 50;">
+        <Label text="Relax &amp; Calm" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+        <Label text="Dengarkan suara alam untuk bermeditasi dan menenangkan pikiran."
+               style="-fx-font-size: 16px; -fx-text-fill: #4a7a8a;"/>
+
+        <Region prefHeight="40"/>
+
+        <HBox alignment="CENTER" spacing="35">
+            <VBox prefWidth="240" prefHeight="280" alignment="CENTER" spacing="20"
+                  style="-fx-background-color: white; -fx-background-radius: 24; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 4);">
+                <Label text="🌧️" style="-fx-font-size: 64px;"/>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="Hujan Tropis" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+                    <Label text="Suara rintik hujan" style="-fx-font-size: 14px; -fx-text-fill: #7a9aa8;"/>
+                </VBox>
+                <Region prefHeight="10"/>
+                <Button fx:id="btnRain" text="▶ Putar Suara" onAction="#handlePlayRain"
+                        style="-fx-background-color: #c8e6f5; -fx-text-fill: #1a3a4a; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 12 24; -fx-cursor: hand;"/>
+            </VBox>
+
+            <VBox prefWidth="240" prefHeight="280" alignment="CENTER" spacing="20"
+                  style="-fx-background-color: white; -fx-background-radius: 24; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 4);">
+                <Label text="🌊" style="-fx-font-size: 64px;"/>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="Ombak Pantai" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+                    <Label text="Desir ombak laut" style="-fx-font-size: 14px; -fx-text-fill: #7a9aa8;"/>
+                </VBox>
+                <Region prefHeight="10"/>
+                <Button fx:id="btnOcean" text="▶ Putar Suara" onAction="#handlePlayOcean"
+                        style="-fx-background-color: #c8e6f5; -fx-text-fill: #1a3a4a; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 12 24; -fx-cursor: hand;"/>
+            </VBox>
+
+            <VBox prefWidth="240" prefHeight="280" alignment="CENTER" spacing="20"
+                  style="-fx-background-color: white; -fx-background-radius: 24; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 4);">
+                <Label text="🌲" style="-fx-font-size: 64px;"/>
+                <VBox alignment="CENTER" spacing="4">
+                    <Label text="Hutan Pinus" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+                    <Label text="Suara angin dan burung" style="-fx-font-size: 14px; -fx-text-fill: #7a9aa8;"/>
+                </VBox>
+                <Region prefHeight="10"/>
+                <Button fx:id="btnForest" text="▶ Putar Suara" onAction="#handlePlayForest"
+                        style="-fx-background-color: #c8e6f5; -fx-text-fill: #1a3a4a; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 20; -fx-padding: 12 24; -fx-cursor: hand;"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</HBox>

@@ -35,3 +35,12 @@
 .logout-button:hover {
     -fx-text-fill: #ff4c4c;
 }
+
+.sidebar-hover {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.sidebar-hover:hover {
+    -fx-background-color: #24495e;
+}

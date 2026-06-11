@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.zenith.frontend.CalmingGamesController"
+      prefWidth="1280" prefHeight="720"
+      stylesheets="@/styles/dashboard.css"
+      style="-fx-background-color: #f0f4f8;">
+
+    <VBox prefWidth="220" prefHeight="720"
+          alignment="TOP_CENTER"
+          style="-fx-background-color: #1a3a4a; -fx-padding: 28 0 28 0;">
+
+        <ImageView fitWidth="64" fitHeight="64" preserveRatio="true">
+            <image><Image url="@/images/Zenith_Logo.png"/></image>
+        </ImageView>
+
+        <Region prefHeight="32"/>
+
+        <HBox fx:id="navHome" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleHome" styleClass="sidebar-hover"
+              style="-fx-padding: 0 0 0 28;">
+            <Label text="⌂" style="-fx-font-size: 20px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Home" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox fx:id="navRelax" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleRelax" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="🧘" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Relax" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              style="-fx-background-color: #7dd8f0; -fx-padding: 0 0 0 28; -fx-cursor: hand;">
+            <Label text="🎮" style="-fx-font-size: 18px; -fx-text-fill: #1a3a4a;"/>
+            <Label text="  Games" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="📊" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Statistics" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region prefHeight="4"/>
+
+        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="👤" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <Label text="  Profile" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
+        </HBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <HBox fx:id="navLogout" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleLogout" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+            <Label text="🚪" style="-fx-font-size: 18px; -fx-text-fill: #e88;"/>
+            <Label text="  Logout" style="-fx-font-size: 14px; -fx-text-fill: #e88;"/>
+        </HBox>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" spacing="30" style="-fx-padding: 40;">
+        <Label text="Breathing Exercise" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+        <Label text="Sinkronkan napasmu dengan pergerakan lingkaran ini untuk menenangkan pikiran."
+               style="-fx-font-size: 16px; -fx-text-fill: #4a7a8a;"/>
+
+        <Region prefHeight="20"/>
+
+        <StackPane prefHeight="350">
+            <Circle radius="160" fill="transparent" stroke="#c8e6f5" strokeWidth="4" strokeDashArray="12, 12"/>
+            <Circle fx:id="breathingCircle" radius="80" fill="#a8d4ed"
+                    style="-fx-effect: dropshadow(gaussian, rgba(168,212,237,0.6), 20, 0, 0, 0);"/>
+            <Label fx:id="instructionLabel" text="Siap"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
+        </StackPane>
+
+        <Region prefHeight="20"/>
+
+        <HBox alignment="CENTER" spacing="25">
+            <Button text="Mulai Relaksasi" onAction="#handleStart"
+                    style="-fx-background-color: #90fe90; -fx-text-fill: #1a4a20; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 14 40; -fx-background-radius: 30; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);"/>
+            <Button text="Berhenti" onAction="#handleStop"
+                    style="-fx-background-color: transparent; -fx-border-color: #ffb3b3; -fx-border-width: 2; -fx-border-radius: 30; -fx-text-fill: #e88; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 40; -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+</HBox>
