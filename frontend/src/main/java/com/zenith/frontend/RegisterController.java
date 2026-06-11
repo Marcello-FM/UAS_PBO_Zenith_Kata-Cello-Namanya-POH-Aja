@@ -1,5 +1,8 @@
 package com.zenith.frontend;
 
+import com.zenith.frontend.api.AlertHelper;
+import com.zenith.frontend.api.ApiClient;
+import com.zenith.frontend.api.ApiException;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -68,19 +71,34 @@ public class RegisterController {
                 : confirmPasswordField.getText();
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            System.out.println("All fields are required.");
+            AlertHelper.showError("Semua field wajib diisi.");
             return;
         }
         if (!password.equals(confirm)) {
-            System.out.println("Passwords do not match.");
+            AlertHelper.showError("Password tidak cocok.");
             return;
         }
         if (!termsCheck.isSelected()) {
-            System.out.println("Please agree to terms & conditions.");
+            AlertHelper.showError("Setujui terms & conditions terlebih dahulu.");
             return;
         }
 
-        System.out.println("Registering: " + email);
+        registerButton.setDisable(true);
+        Parent root = registerButton.getScene().getRoot();
+
+        new Thread(() -> {
+            try {
+                ApiClient.register(name, email, password);
+                javafx.application.Platform.runLater(() -> {
+                    registerButton.setDisable(false);
+                    AlertHelper.showInfo("Registrasi berhasil. Silakan login.");
+                    SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
+                });
+            } catch (ApiException ex) {
+                javafx.application.Platform.runLater(() -> registerButton.setDisable(false));
+                AlertHelper.showError(ex.getMessage());
+            }
+        }).start();
     }
 
     @FXML
@@ -91,11 +109,11 @@ public class RegisterController {
 
     @FXML
     private void handleTerms() {
-        System.out.println("Show terms & conditions");
+        AlertHelper.showInfo("Dengan menggunakan Zenith, kamu setuju menggunakan aplikasi ini untuk wellness pribadi.");
     }
 
     @FXML
     private void handlePrivacy() {
-        System.out.println("Show privacy policy");
+        AlertHelper.showInfo("Data kesehatan mentalmu disimpan secara aman di server lokal aplikasi.");
     }
 }

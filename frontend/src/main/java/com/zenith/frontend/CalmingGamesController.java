@@ -1,5 +1,6 @@
 package com.zenith.frontend;
 
+import com.zenith.frontend.api.SessionManager;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
@@ -15,6 +16,7 @@ public class CalmingGamesController {
 
     @FXML private HBox navHome;
     @FXML private HBox navRelax;
+    @FXML private HBox navStats;
     @FXML private HBox navLogout;
     @FXML private Circle breathingCircle;
     @FXML private Label instructionLabel;
@@ -69,8 +71,16 @@ public class CalmingGamesController {
     }
 
     @FXML
+    private void handleStatistics() {
+        handleStop();
+        Parent root = navStats.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/history.fxml", root, 60);
+    }
+
+    @FXML
     private void handleLogout() {
         handleStop();
+        SessionManager.clear();
         Parent root = navLogout.getScene().getRoot();
         SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
     }

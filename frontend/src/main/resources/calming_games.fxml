@@ -47,16 +47,10 @@
 
         <Region prefHeight="4"/>
 
-        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+        <HBox fx:id="navStats" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
+              onMouseClicked="#handleStatistics" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
             <Label text="📊" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
             <Label text="  Statistics" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
-        </HBox>
-
-        <Region prefHeight="4"/>
-
-        <HBox alignment="CENTER_LEFT" prefWidth="220" prefHeight="48" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
-            <Label text="👤" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
-            <Label text="  Profile" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
         </HBox>
 
         <Region VBox.vgrow="ALWAYS"/>

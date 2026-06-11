@@ -1,13 +1,19 @@
 package com.zenith.frontend;
 
+import com.zenith.frontend.api.AlertHelper;
+import com.zenith.frontend.api.ApiClient;
+import com.zenith.frontend.api.ApiException;
+import com.zenith.frontend.api.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ForgotPasswordController {
 
+    @FXML private Label         emailLabel;
     @FXML private PasswordField newPasswordField;
     @FXML private TextField     newPasswordVisible;
     @FXML private Button        eyeBtn1;
@@ -19,6 +25,16 @@ public class ForgotPasswordController {
 
     private boolean newPasswordShown     = false;
     private boolean confirmPasswordShown = false;
+
+    @FXML
+    private void initialize() {
+        String email = SessionManager.getResetEmail();
+        if (email != null && !email.isBlank()) {
+            emailLabel.setText("Reset password untuk: " + email);
+        } else {
+            emailLabel.setText("Email reset tidak ditemukan. Kembali ke login dan coba lagi.");
+        }
+    }
 
     @FXML
     private void toggleNewPassword() {
@@ -54,6 +70,7 @@ public class ForgotPasswordController {
 
     @FXML
     private void handleCreatePassword() {
+        String email = SessionManager.getResetEmail();
         String password = newPasswordShown
                 ? newPasswordVisible.getText()
                 : newPasswordField.getText();
@@ -61,19 +78,40 @@ public class ForgotPasswordController {
                 ? confirmPasswordVisible.getText()
                 : confirmPasswordField.getText();
 
+        if (email == null || email.isBlank()) {
+            AlertHelper.showError("Email reset tidak ditemukan.");
+            return;
+        }
         if (password.isEmpty() || confirm.isEmpty()) {
-            System.out.println("Both fields are required.");
+            AlertHelper.showError("Semua field wajib diisi.");
             return;
         }
         if (!password.equals(confirm)) {
-            System.out.println("Passwords do not match.");
+            AlertHelper.showError("Password tidak cocok.");
+            return;
+        }
+        if (password.length() < 6) {
+            AlertHelper.showError("Password minimal 6 karakter.");
             return;
         }
 
-        System.out.println("Password reset successful.");
-
+        createButton.setDisable(true);
         Parent root = createButton.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
+
+        new Thread(() -> {
+            try {
+                ApiClient.resetPassword(email, password);
+                javafx.application.Platform.runLater(() -> {
+                    createButton.setDisable(false);
+                    SessionManager.clearResetEmail();
+                    AlertHelper.showInfo("Password berhasil diperbarui.");
+                    SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
+                });
+            } catch (ApiException ex) {
+                javafx.application.Platform.runLater(() -> createButton.setDisable(false));
+                AlertHelper.showError(ex.getMessage());
+            }
+        }).start();
     }
 
     @FXML

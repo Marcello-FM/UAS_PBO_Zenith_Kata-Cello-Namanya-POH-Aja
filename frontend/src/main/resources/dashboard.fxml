@@ -48,18 +48,11 @@
         <Region prefHeight="4"/>
 
         <HBox fx:id="navStats" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
-              styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
+              onMouseClicked="#handleMyProgress" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
             <Label text="📊" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
             <Label text="  Statistics" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
         </HBox>
 
-        <Region prefHeight="4"/>
-
-        <HBox fx:id="navProfile" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
-              styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
-            <Label text="👤" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
-            <Label text="  Profile" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
-        </HBox>
 
         <Region VBox.vgrow="ALWAYS"/>
 
@@ -78,7 +71,7 @@
 
             <StackPane prefHeight="220" style="-fx-background-color: #1a3a4a; -fx-background-radius: 0 0 36 36;">
                 <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 0 40 32 40;">
-                    <Label text="Hello, User 👋" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                    <Label fx:id="greetingLabel" text="Hello, User 👋" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
                     <Label text="How are you feeling today?" style="-fx-text-fill: #b0c8d4; -fx-font-size: 15px;"/>
                     <Region prefHeight="20"/>
                     <HBox prefWidth="560" prefHeight="52" alignment="CENTER"
@@ -93,17 +86,17 @@
                 <HBox prefHeight="80" prefWidth="560" alignment="CENTER"
                       style="-fx-background-color: #f5c842; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0, 0, 4); -fx-translate-y: -20;">
                     <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label text="7" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        <Label fx:id="streakLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
                         <Label text="Day Streaks" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
                     </VBox>
                     <Separator orientation="VERTICAL" prefHeight="44" style="-fx-background-color: #ffffff66;"/>
                     <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label text="Happy" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        <Label fx:id="moodLabel" text="-" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
                         <Label text="Avg. Mood" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
                     </VBox>
                     <Separator orientation="VERTICAL" prefHeight="44" style="-fx-background-color: #ffffff66;"/>
                     <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label text="10" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        <Label fx:id="sessionsLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
                         <Label text="Sessions" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
                     </VBox>
                 </HBox>
@@ -150,7 +143,7 @@
                     <VBox fx:id="cardGames" HBox.hgrow="ALWAYS" prefHeight="160" spacing="8"
                           onMouseClicked="#handleCalmingGames"
                           style="-fx-background-color: #90fe90; -fx-background-radius: 20; -fx-padding: 20 20 20 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 3);">
-                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #60e060; -background-radius: 12;">
+                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #60e060; -fx-background-radius: 12;">
                             <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
                                 <image><Image url="@/images/fluent-mdl2_game.png"/></image>
                             </ImageView>

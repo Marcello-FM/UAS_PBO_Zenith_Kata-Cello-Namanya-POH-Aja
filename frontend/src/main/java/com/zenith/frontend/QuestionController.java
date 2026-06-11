@@ -207,6 +207,7 @@ public class QuestionController {
             int score = 0;
             for (int a : answers) score += (a >= 0 ? a + 1 : 0);
             ResultData.getInstance().setScore(score);
+            ResultData.getInstance().setAnswers(answers);
             Parent root = nextButton.getScene().getRoot();
             SceneNavigator.navigateWithAnimation("/result.fxml", root, 60);
         }

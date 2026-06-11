@@ -1,16 +1,18 @@
 package com.zenith.frontend;
 
+import com.zenith.frontend.api.AlertHelper;
+import com.zenith.frontend.api.ApiClient;
+import com.zenith.frontend.api.ApiException;
+import com.zenith.frontend.api.ProgressSummaryResponse;
+import com.zenith.frontend.api.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class DashboardController {
 
-    @FXML private HBox navHome;
-    @FXML private HBox navRelax;
-    @FXML private HBox navStats;
-    @FXML private HBox navProfile;
     @FXML private HBox navLogout;
 
     @FXML private VBox cardStressCheck;
@@ -18,32 +20,67 @@ public class DashboardController {
     @FXML private VBox cardRelax;
     @FXML private VBox cardGames;
 
+    @FXML private Label greetingLabel;
+    @FXML private Label streakLabel;
+    @FXML private Label moodLabel;
+    @FXML private Label sessionsLabel;
+
+    @FXML
+    private void initialize() {
+        String name = SessionManager.getFullName();
+        if (name != null && !name.isBlank()) {
+            greetingLabel.setText("Hello, " + name.split(" ")[0] + " 👋");
+        }
+
+        loadProgress();
+    }
+
+    private void loadProgress() {
+        new Thread(() -> {
+            try {
+                ProgressSummaryResponse progress = ApiClient.getProgress();
+                javafx.application.Platform.runLater(() -> applyProgress(progress));
+            } catch (ApiException ex) {
+                javafx.application.Platform.runLater(() -> AlertHelper.showError(ex.getMessage()));
+            }
+        }).start();
+    }
+
+    private void applyProgress(ProgressSummaryResponse progress) {
+        streakLabel.setText(String.valueOf(progress.getDayStreak()));
+        moodLabel.setText(progress.getAverageMood());
+        sessionsLabel.setText(String.valueOf(progress.getTotalAssessments()));
+    }
+
     @FXML
     private void handleLogout() {
+        SessionManager.clear();
         Parent root = navLogout.getScene().getRoot();
         SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
     }
 
     @FXML
     private void handleStressCheck() {
-        Parent root = cardStressCheck.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/questionnaire.fxml", root, 60);
+        navigate("/questionnaire.fxml", 60);
     }
 
     @FXML
     private void handleMyProgress() {
-        System.out.println("My Progress");
+        navigate("/history.fxml", 60);
     }
 
     @FXML
     private void handleRelax() {
-        Parent root = cardRelax.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/relax_calm.fxml", root, 60);
+        navigate("/relax_calm.fxml", 60);
     }
 
     @FXML
     private void handleCalmingGames() {
-        Parent root = cardGames.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/calming_games.fxml", root, 60);
+        navigate("/calming_games.fxml", 60);
+    }
+
+    private void navigate(String fxmlPath, double slideOffset) {
+        Parent root = navLogout.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation(fxmlPath, root, slideOffset);
     }
 }

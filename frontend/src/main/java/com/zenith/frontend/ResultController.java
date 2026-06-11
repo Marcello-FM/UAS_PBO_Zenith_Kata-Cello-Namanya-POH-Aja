@@ -1,9 +1,16 @@
 package com.zenith.frontend;
 
+import com.zenith.frontend.api.AlertHelper;
+import com.zenith.frontend.api.ApiClient;
+import com.zenith.frontend.api.ApiException;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultController {
 
@@ -32,6 +39,21 @@ public class ResultController {
         } else {
             applyLowStress(score);
         }
+
+        saveAssessment(score);
+    }
+
+    private void saveAssessment(int score) {
+        int[] answersArray = ResultData.getInstance().getAnswers();
+        List<Integer> answers = Arrays.stream(answersArray).boxed().collect(Collectors.toList());
+
+        new Thread(() -> {
+            try {
+                ApiClient.saveAssessment(score, answers);
+            } catch (ApiException ex) {
+                AlertHelper.showError("Hasil tidak tersimpan: " + ex.getMessage());
+            }
+        }).start();
     }
 
     private void applyLowStress(int score) {
@@ -88,6 +110,6 @@ public class ResultController {
     @FXML
     private void handleViewProgress() {
         Parent root = progressButton.getScene().getRoot();
-        SceneNavigator.navigateWithAnimation("/dashboard.fxml", root, 60);
+        SceneNavigator.navigateWithAnimation("/history.fxml", root, 60);
     }
 }

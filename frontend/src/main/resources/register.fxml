@@ -68,8 +68,7 @@
                                  -fx-background-radius: 10;
                                  -fx-padding: 0 14 0 14;"
                           prefHeight="48" prefWidth="400">
-                        <Label text="👤"
-                               style="-fx-text-fill: #8aabb8; -fx-font-size: 15px;"/>
+
                         <TextField fx:id="fullNameField"
                                    promptText="John Doe"
                                    HBox.hgrow="ALWAYS"
@@ -91,8 +90,7 @@
                                  -fx-background-radius: 10;
                                  -fx-padding: 0 14 0 14;"
                           prefHeight="48" prefWidth="400">
-                        <Label text="✉"
-                               style="-fx-text-fill: #8aabb8; -fx-font-size: 16px;"/>
+
                         <TextField fx:id="emailField"
                                    promptText="your.email@example.com"
                                    HBox.hgrow="ALWAYS"
@@ -107,14 +105,13 @@
                 <Region prefHeight="14"/>
 
                 <VBox spacing="6" maxWidth="400">
-                    <Label text="Password"
-                           style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
+
                     <HBox alignment="CENTER_LEFT" spacing="10"
                           style="-fx-background-color: white;
                                  -fx-background-radius: 10;
                                  -fx-padding: 0 14 0 14;"
                           prefHeight="48" prefWidth="400">
-                        <Label text="🔒"
+                        <Label text=""
                                style="-fx-text-fill: #8aabb8; -fx-font-size: 15px;"/>
                         <PasswordField fx:id="passwordField"
                                        promptText="••••••••"
@@ -151,8 +148,7 @@
                                  -fx-background-radius: 10;
                                  -fx-padding: 0 14 0 14;"
                           prefHeight="48" prefWidth="400">
-                        <Label text="🔒"
-                               style="-fx-text-fill: #8aabb8; -fx-font-size: 15px;"/>
+
                         <PasswordField fx:id="confirmPasswordField"
                                        promptText="••••••••"
                                        HBox.hgrow="ALWAYS"
