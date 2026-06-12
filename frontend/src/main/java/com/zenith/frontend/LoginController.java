@@ -89,63 +89,12 @@ public class LoginController {
             return;
         }
 
-        showResetPasswordDialog(email);
+        SessionManager.setResetEmail(email);
+
+        Parent root = loginButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/forgot_password.fxml", root, 60);
     }
 
-    private void showResetPasswordDialog(String email) {
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle("Reset Password");
-        dialog.setHeaderText("Buat password baru");
-        dialog.setContentText("Email: " + email);
-
-        PasswordField newPasswordField = new PasswordField();
-        newPasswordField.setPromptText("Password baru (min. 6 karakter)");
-        newPasswordField.setMaxWidth(Double.MAX_VALUE);
-
-        PasswordField confirmPasswordField = new PasswordField();
-        confirmPasswordField.setPromptText("Konfirmasi password");
-        confirmPasswordField.setMaxWidth(Double.MAX_VALUE);
-
-        VBox content = new VBox(8,
-                new Label("Password Baru"),
-                newPasswordField,
-                new Label("Konfirmasi Password"),
-                confirmPasswordField);
-        content.setPadding(new Insets(10, 0, 0, 0));
-        dialog.getDialogPane().setContent(content);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
-        Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isEmpty() || result.get() != ButtonType.OK) {
-            return;
-        }
-
-        String newPassword = newPasswordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
-
-        if (newPassword.isBlank() || confirmPassword.isBlank()) {
-            AlertHelper.showError("Semua field wajib diisi.");
-            return;
-        }
-        if (!newPassword.equals(confirmPassword)) {
-            AlertHelper.showError("Password tidak cocok.");
-            return;
-        }
-        if (newPassword.length() < 6) {
-            AlertHelper.showError("Password minimal 6 karakter.");
-            return;
-        }
-
-        new Thread(() -> {
-            try {
-                ApiClient.resetPassword(email, newPassword);
-                javafx.application.Platform.runLater(() ->
-                        AlertHelper.showInfo("Password berhasil diperbarui. Silakan login."));
-            } catch (ApiException ex) {
-                javafx.application.Platform.runLater(() -> AlertHelper.showError(ex.getMessage()));
-            }
-        }).start();
-    }
 
     @FXML
     private void handleRegister() {
