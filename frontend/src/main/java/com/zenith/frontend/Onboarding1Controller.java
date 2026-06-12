@@ -74,7 +74,6 @@ public class Onboarding1Controller {
     @FXML
     private void handleNext() {
         if (currentPage >= IMAGES.length - 1) {
-            // Get Started — animate out to login
             Parent root = nextButton.getScene().getRoot();
             SceneNavigator.navigateWithAnimation("/login.fxml", root);
             return;
@@ -121,7 +120,6 @@ public class Onboarding1Controller {
             headingLine2.setText(HEADING2[nextPage]);
             subtitle.setText(SUBTITLES[nextPage]);
 
-            // prime slide-in start position
             headingLine1.setTranslateY(14);
             headingLine2.setTranslateY(14);
             subtitle.setTranslateY(10);

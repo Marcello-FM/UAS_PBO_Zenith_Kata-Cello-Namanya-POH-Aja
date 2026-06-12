@@ -46,7 +46,6 @@ public class QuestionController {
     private int currentIndex = 0;
     private final int[] answers = new int[QUESTIONS.length];
 
-    // ToggleGroup initialized as field — guaranteed non-null before any event fires
     private final ToggleGroup toggleGroup = new ToggleGroup();
 
     private static final String STYLE_UNSELECTED =
@@ -142,7 +141,7 @@ public class QuestionController {
         if (progressTrack.getWidth() > 0) {
             applyWidth.run();
         } else {
-            progressFillRegion.setPrefWidth(840 * pctDecimal); // fallback
+            progressFillRegion.setPrefWidth(840 * pctDecimal);
         }
         progressTrack.widthProperty().addListener((obs, o, n) ->
             progressFillRegion.setPrefWidth(n.doubleValue() * pctDecimal));

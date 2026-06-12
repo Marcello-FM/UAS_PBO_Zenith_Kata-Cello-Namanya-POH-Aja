@@ -11,7 +11,7 @@
       fx:controller="com.zenith.frontend.DashboardController"
       prefWidth="1280" prefHeight="720"
       stylesheets="@/styles/dashboard.css"
-      style="-fx-background-color: #f0f4f8;">
+      style="-fx-background-color: #f4f7f9;">
 
     <VBox prefWidth="220" prefHeight="720"
           alignment="TOP_CENTER"
@@ -53,7 +53,6 @@
             <Label text="  Statistics" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
         </HBox>
 
-
         <Region VBox.vgrow="ALWAYS"/>
 
         <HBox fx:id="navLogout" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
@@ -65,9 +64,9 @@
     </VBox>
 
     <ScrollPane HBox.hgrow="ALWAYS" fitToWidth="true"
-                style="-fx-background: #f0f4f8; -fx-background-color: #f0f4f8; -fx-border-color: transparent;">
+                style="-fx-background: #f4f7f9; -fx-background-color: #f4f7f9; -fx-border-color: transparent;">
 
-        <VBox spacing="0" style="-fx-background-color: #f0f4f8;">
+        <VBox spacing="0" style="-fx-background-color: #f4f7f9;">
 
             <StackPane prefHeight="220" style="-fx-background-color: #1a3a4a; -fx-background-radius: 0 0 36 36;">
                 <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 0 40 32 40;">
@@ -83,73 +82,94 @@
             </StackPane>
 
             <HBox alignment="CENTER" style="-fx-padding: 0 40 0 40;">
-                <HBox prefHeight="80" prefWidth="560" alignment="CENTER"
-                      style="-fx-background-color: #f5c842; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0, 0, 4); -fx-translate-y: -20;">
-                    <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label fx:id="streakLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                        <Label text="Day Streaks" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
-                    </VBox>
-                    <Separator orientation="VERTICAL" prefHeight="44" style="-fx-background-color: #ffffff66;"/>
-                    <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label fx:id="moodLabel" text="-" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                        <Label text="Avg. Mood" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
-                    </VBox>
-                    <Separator orientation="VERTICAL" prefHeight="44" style="-fx-background-color: #ffffff66;"/>
-                    <VBox alignment="CENTER" prefWidth="186" spacing="2">
-                        <Label fx:id="sessionsLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                        <Label text="Sessions" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
-                    </VBox>
-                </HBox>
+                <GridPane prefHeight="80" prefWidth="560" alignment="CENTER"
+                          style="-fx-background-color: linear-gradient(to right, #f5c842, #e0b434); -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(224,180,52,0.25), 12, 0, 0, 4); -fx-translate-y: -20;">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.3"/>
+                        <ColumnConstraints percentWidth="0.1"/>
+                        <ColumnConstraints percentWidth="33.2"/>
+                        <ColumnConstraints percentWidth="0.1"/>
+                        <ColumnConstraints percentWidth="33.3"/>
+                    </columnConstraints>
+
+                    <rowConstraints>
+                        <RowConstraints valignment="CENTER"/>
+                    </rowConstraints>
+
+                    <children>
+                        <VBox alignment="CENTER" spacing="2" GridPane.columnIndex="0">
+                            <Label fx:id="streakLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                            <Label text="Day Streaks" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
+                        </VBox>
+
+                        <Region style="-fx-background-color: rgba(255,255,255,0.35); -fx-pref-height: 40; -fx-max-width: 1;" GridPane.columnIndex="1"/>
+
+                        <VBox alignment="CENTER" spacing="2" GridPane.columnIndex="2">
+                            <Label fx:id="moodLabel" text="-" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 4 0 0 0;"/>
+                            <Label text="Avg. Mood" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
+                        </VBox>
+
+                        <Region style="-fx-background-color: rgba(255,255,255,0.35); -fx-pref-height: 40; -fx-max-width: 1;" GridPane.columnIndex="3"/>
+
+                        <VBox alignment="CENTER" spacing="2" GridPane.columnIndex="4">
+                            <Label fx:id="sessionsLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                            <Label text="Sessions" style="-fx-font-size: 12px; -fx-text-fill: #ffffffcc;"/>
+                        </VBox>
+                    </children>
+                </GridPane>
             </HBox>
 
             <VBox style="-fx-padding: 8 40 32 40;" spacing="16">
                 <Label text="Wellness Tool" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
-                <HBox spacing="20">
-                    <VBox fx:id="cardStressCheck" HBox.hgrow="ALWAYS" prefHeight="160" spacing="8"
+
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <VBox fx:id="cardStressCheck" HBox.hgrow="ALWAYS" minHeight="165" prefHeight="165" maxHeight="165" spacing="8"
                           onMouseClicked="#handleStressCheck"
-                          style="-fx-background-color: #c8e6f5; -fx-background-radius: 20; -fx-padding: 20 20 20 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 3);">
-                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #a8d4ed; -fx-background-radius: 12;">
+                          style="-fx-background-color: #c8e6f5; -fx-background-radius: 20; -fx-padding: 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 3);">
+                        <StackPane prefWidth="48" prefHeight="48" maxWidth="48" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0, 0, 2);">
                             <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
                                 <image><Image url="@/images/bi_card-checklist.png"/></image>
                             </ImageView>
                         </StackPane>
                         <Label text="Stress Check" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
-                        <Label text="Take a questionnaire" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #4a7a8a;"/>
+                        <Label text="Take a questionnaire" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
                     </VBox>
-                    <VBox fx:id="cardMyProgress" HBox.hgrow="ALWAYS" prefHeight="160" spacing="8"
+                    <VBox fx:id="cardMyProgress" HBox.hgrow="ALWAYS" minHeight="165" prefHeight="165" maxHeight="165" spacing="8"
                           onMouseClicked="#handleMyProgress"
-                          style="-fx-background-color: #d8c8f0; -fx-background-radius: 20; -fx-padding: 20 20 20 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 3);">
-                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #c0a8e8; -fx-background-radius: 12;">
+                          style="-fx-background-color: #d8c8f0; -fx-background-radius: 20; -fx-padding: 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 3);">
+                        <StackPane prefWidth="48" prefHeight="48" maxWidth="48" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0, 0, 2);">
                             <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
                                 <image><Image url="@/images/icon-park-outline_trend.png"/></image>
                             </ImageView>
                         </StackPane>
                         <Label text="My Progress" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
-                        <Label text="View your trends" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #5a4a7a;"/>
+                        <Label text="View your trends" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
                     </VBox>
                 </HBox>
-                <HBox spacing="20">
-                    <VBox fx:id="cardRelax" HBox.hgrow="ALWAYS" prefHeight="160" spacing="8"
+
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <VBox fx:id="cardRelax" HBox.hgrow="ALWAYS" minHeight="165" prefHeight="165" maxHeight="165" spacing="8"
                           onMouseClicked="#handleRelax"
-                          style="-fx-background-color: #f5f0a0; -fx-background-radius: 20; -fx-padding: 20 20 20 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 3);">
-                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #e0d870; -fx-background-radius: 12;">
+                          style="-fx-background-color: #f5f0a0; -fx-background-radius: 20; -fx-padding: 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 3);">
+                        <StackPane prefWidth="48" prefHeight="48" maxWidth="48" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0, 0, 2);">
                             <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
                                 <image><Image url="@/images/mdi_meditation.png"/></image>
                             </ImageView>
                         </StackPane>
                         <Label text="Relax &amp; Calm" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
-                        <Label text="Meditation and Sounds" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #5a5a20;"/>
+                        <Label text="Meditation and Sounds" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
                     </VBox>
-                    <VBox fx:id="cardGames" HBox.hgrow="ALWAYS" prefHeight="160" spacing="8"
+                    <VBox fx:id="cardGames" HBox.hgrow="ALWAYS" minHeight="165" prefHeight="165" maxHeight="165" spacing="8"
                           onMouseClicked="#handleCalmingGames"
-                          style="-fx-background-color: #90fe90; -fx-background-radius: 20; -fx-padding: 20 20 20 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 3);">
-                        <StackPane prefWidth="48" prefHeight="48" style="-fx-background-color: #60e060; -fx-background-radius: 12;">
+                          style="-fx-background-color: #90fe90; -fx-background-radius: 20; -fx-padding: 20; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 10, 0, 0, 3);">
+                        <StackPane prefWidth="48" prefHeight="48" maxWidth="48" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0, 0, 2);">
                             <ImageView fitWidth="28" fitHeight="28" preserveRatio="true">
                                 <image><Image url="@/images/fluent-mdl2_game.png"/></image>
                             </ImageView>
                         </StackPane>
                         <Label text="Calming Games" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a3a4a;"/>
-                        <Label text="Play &amp; unwind your mind" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #1a4a20;"/>
+                        <Label text="Play &amp; unwind your mind" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
                     </VBox>
                 </HBox>
             </VBox>
