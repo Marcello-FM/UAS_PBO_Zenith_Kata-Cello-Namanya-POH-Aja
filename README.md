@@ -8,27 +8,26 @@ Zenith Mental Health adalah aplikasi desktop yang dirancang sebagai wellness too
 * Kuisioner Relaksasi (Stress Check): Asesmen mandiri untuk mendeteksi tingkat stres pengguna secara real-time.
 * Progress Kesehatan Mental: Dasbor statistik untuk melacak riwayat, skor rata-rata mood, dan sesi pengguna.
 * Audio Relaksasi: Pemutar suara alam (hujan, ombak, hutan) untuk membantu meditasi dan menenangkan pikiran.
-* Game Relaksasi: Permainan pernapasan interaktif yang mensinkronkan ritme napas pengguna dengan pergerakan visual.
+* Game Relaksasi: Permainan pernapasan interaktif yang mensinkronkan ritme napas pengguna dengan pergerakan visual, game pengingat dan juga game mindfull drawing
 
 ## Cara Menjalankan Aplikasi
 
-### Prasyarat (Dependencies)
-* Java Development Kit (JDK) versi 17 atau yang lebih baru.
-* Apache Maven.
+Aplikasi ini terdiri dari dua bagian (Backend dan Frontend) yang harus dijalankan secara bersamaan. Pastikan JDK 17 (atau lebih baru) dan Maven sudah terinstal.
 
-### Menjalankan Backend (Spring Boot)
-1. Buka terminal atau command prompt.
-2. Arahkan direktori ke folder `backend`.
-3. Jalankan perintah berikut:
-   `mvn spring-boot:run`
-4. Tunggu hingga server berjalan (secara default di port 8080).
+### Opsi 1: Menjalankan via IDE (IntelliJ IDEA / Eclipse)
+1. Buka folder repositori proyek ini di IDE pilihan Anda.
+2. Tunggu proses sinkronisasi dan indexing Maven selesai.
+3. **Jalankan Backend:** Arahkan ke folder `backend/src/main/java/com/zenith/backend`, cari file `BackendApplication.java`, lalu klik kanan dan pilih **Run**. Tunggu hingga server Spring Boot berjalan di port 8080.
+4. **Jalankan Frontend:** Arahkan ke folder frontend tempat file launcher Anda berada, cari file `Launcher.java`, lalu klik kanan dan pilih **Run**. Jendela aplikasi Zenith Mental Health akan otomatis terbuka.
 
-### Menjalankan Frontend (JavaFX)
-1. Buka tab terminal atau command prompt baru.
-2. Arahkan direktori ke folder `frontend`.
-3. Jalankan perintah berikut:
-   `mvn javafx:run`
-4. Jendela aplikasi Zenith Mental Health akan otomatis terbuka dan siap digunakan.
+### Opsi 2: Menjalankan via Terminal / Command Prompt
+1. Buka Terminal dan arahkan ke root direktori proyek.
+2. Buka tab Terminal pertama untuk menjalankan Backend:
+   - `cd backend`
+   - `mvn spring-boot:run`
+3. Buka tab Terminal kedua untuk menjalankan Frontend:
+   - `cd frontend`
+   - `mvn javafx:run`
 
 ## Link Video Presentasi
 [MASUKKAN LINK YOUTUBE DI SINI]
