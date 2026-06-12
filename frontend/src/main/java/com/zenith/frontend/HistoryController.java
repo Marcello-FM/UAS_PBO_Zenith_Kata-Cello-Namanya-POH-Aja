@@ -18,8 +18,11 @@ public class HistoryController {
     @FXML private Label moodLabel;
     @FXML private Label sessionsLabel;
     @FXML private Label averageScoreLabel;
-    @FXML private VBox historyList;
-    @FXML private Button backButton;
+    @FXML private VBox  historyList;
+    @FXML private HBox  backButton;   // logout button in sidebar
+    @FXML private HBox  navHome;
+    @FXML private HBox  navRelax;
+    @FXML private HBox  navGames;
 
     @FXML
     private void initialize() {
@@ -79,8 +82,27 @@ public class HistoryController {
     }
 
     @FXML
-    private void handleBack() {
-        Parent root = backButton.getScene().getRoot();
+    private void handleHome() {
+        Parent root = navHome.getScene().getRoot();
         SceneNavigator.navigateWithAnimation("/dashboard.fxml", root, -60);
+    }
+
+    @FXML
+    private void handleRelax() {
+        Parent root = navRelax.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/relax_calm.fxml", root, 60);
+    }
+
+    @FXML
+    private void handleGames() {
+        Parent root = navGames.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/calming_games.fxml", root, 60);
+    }
+
+    @FXML
+    private void handleBack() {
+        // logout button — navigate to login
+        Parent root = backButton.getScene().getRoot();
+        SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
     }
 }

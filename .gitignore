@@ -28,3 +28,7 @@ hs_err_pid*
 replay_pid*
 
 .DS_Store
+
+# H2 database files
+*.mv.db
+*.trace.db

@@ -19,6 +19,7 @@
 
         <ImageView fitWidth="64" fitHeight="64" preserveRatio="true">
             <image><Image url="@/images/Zenith_Logo.png"/></image>
+            <effect><javafx.scene.effect.ColorAdjust brightness="1.0" saturation="-1.0"/></effect>
         </ImageView>
 
         <Region prefHeight="32"/>
@@ -33,7 +34,10 @@
 
         <HBox fx:id="navRelax" alignment="CENTER_LEFT" prefWidth="220" prefHeight="48"
               onMouseClicked="#handleRelax" styleClass="sidebar-hover" style="-fx-padding: 0 0 0 28;">
-            <Label text="🧘" style="-fx-font-size: 18px; -fx-text-fill: #b0c8d4;"/>
+            <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                <image><Image url="@/images/mdi_meditation.png"/></image>
+                <effect><javafx.scene.effect.ColorAdjust brightness="1.0" saturation="-1.0"/></effect>
+            </ImageView>
             <Label text="  Relax" style="-fx-font-size: 14px; -fx-text-fill: #b0c8d4;"/>
         </HBox>
 
