@@ -84,11 +84,11 @@ public class SceneNavigator {
                 fadeIn.setInterpolator(Interpolator.EASE_OUT);
 
                 Timeline slideIn = new Timeline(
-                    new KeyFrame(Duration.ZERO,
-                        new KeyValue(newRoot.translateXProperty(), slideFromX)),
-                    new KeyFrame(Duration.millis(320),
-                        new KeyValue(newRoot.translateXProperty(), 0.0,
-                                     Interpolator.EASE_OUT))
+                        new KeyFrame(Duration.ZERO,
+                                new KeyValue(newRoot.translateXProperty(), slideFromX)),
+                        new KeyFrame(Duration.millis(320),
+                                new KeyValue(newRoot.translateXProperty(), 0.0,
+                                        Interpolator.EASE_OUT))
                 );
 
                 new ParallelTransition(fadeIn, slideIn).play();

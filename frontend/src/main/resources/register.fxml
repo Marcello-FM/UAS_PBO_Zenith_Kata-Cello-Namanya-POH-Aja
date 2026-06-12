@@ -25,17 +25,13 @@
                     <image><Image url="@/images/Zenith_Logo.png"/></image>
                 </ImageView>
                 <Label text="Begin your wellness journey"
-                       style="-fx-text-fill: #7dd8f0;
-                              -fx-font-size: 15px;
-                              -fx-font-style: italic;"/>
+                       style="-fx-text-fill: #7dd8f0; -fx-font-size: 15px; -fx-font-style: italic;"/>
             </VBox>
 
         </StackPane>
 
         <ScrollPane HBox.hgrow="ALWAYS" fitToWidth="true"
-                    style="-fx-background: #1a3a4a;
-                           -fx-background-color: #1a3a4a;
-                           -fx-border-color: transparent;">
+                    style="-fx-background: #1a3a4a; -fx-background-color: #1a3a4a; -fx-border-color: transparent;">
 
             <VBox alignment="CENTER"
                   style="-fx-padding: 40 80 40 80; -fx-background-color: #1a3a4a;"
@@ -48,15 +44,12 @@
                 <Region prefHeight="20"/>
 
                 <Label text="Create Account"
-                       style="-fx-text-fill: white;
-                              -fx-font-size: 34px;
-                              -fx-font-weight: bold;"/>
+                       style="-fx-text-fill: white; -fx-font-size: 34px; -fx-font-weight: bold;"/>
 
                 <Region prefHeight="6"/>
 
                 <Label text="Start Your Wellness Journey Today"
-                       style="-fx-text-fill: #b0c8d4;
-                              -fx-font-size: 14px;"/>
+                       style="-fx-text-fill: #b0c8d4; -fx-font-size: 14px;"/>
 
                 <Region prefHeight="28"/>
 
@@ -64,19 +57,12 @@
                     <Label text="Full Name"
                            style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                     <HBox alignment="CENTER_LEFT" spacing="10"
-                          style="-fx-background-color: white;
-                                 -fx-background-radius: 10;
-                                 -fx-padding: 0 14 0 14;"
-                          prefHeight="48" prefWidth="400">
-
+                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-border-color: #cbd5e1; -fx-border-radius: 12;"
+                          prefHeight="50" prefWidth="400">
                         <TextField fx:id="fullNameField"
                                    promptText="John Doe"
                                    HBox.hgrow="ALWAYS"
-                                   style="-fx-background-color: transparent;
-                                          -fx-border-color: transparent;
-                                          -fx-font-size: 14px;
-                                          -fx-text-fill: #1a3a4a;
-                                          -fx-prompt-text-fill: #aac4cf;"/>
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a; -fx-prompt-text-fill: #aac4cf;"/>
                     </HBox>
                 </VBox>
 
@@ -86,55 +72,35 @@
                     <Label text="Email"
                            style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                     <HBox alignment="CENTER_LEFT" spacing="10"
-                          style="-fx-background-color: white;
-                                 -fx-background-radius: 10;
-                                 -fx-padding: 0 14 0 14;"
-                          prefHeight="48" prefWidth="400">
-
+                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-border-color: #cbd5e1; -fx-border-radius: 12;"
+                          prefHeight="50" prefWidth="400">
                         <TextField fx:id="emailField"
                                    promptText="your.email@example.com"
                                    HBox.hgrow="ALWAYS"
-                                   style="-fx-background-color: transparent;
-                                          -fx-border-color: transparent;
-                                          -fx-font-size: 14px;
-                                          -fx-text-fill: #1a3a4a;
-                                          -fx-prompt-text-fill: #aac4cf;"/>
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a; -fx-prompt-text-fill: #aac4cf;"/>
                     </HBox>
                 </VBox>
 
                 <Region prefHeight="14"/>
 
                 <VBox spacing="6" maxWidth="400">
-
+                    <Label text="Password" style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                     <HBox alignment="CENTER_LEFT" spacing="10"
-                          style="-fx-background-color: white;
-                                 -fx-background-radius: 10;
-                                 -fx-padding: 0 14 0 14;"
-                          prefHeight="48" prefWidth="400">
+                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-border-color: #cbd5e1; -fx-border-radius: 12;"
+                          prefHeight="50" prefWidth="400">
                         <Label text=""
                                style="-fx-text-fill: #8aabb8; -fx-font-size: 15px;"/>
                         <PasswordField fx:id="passwordField"
                                        promptText="••••••••"
                                        HBox.hgrow="ALWAYS"
-                                       style="-fx-background-color: transparent;
-                                              -fx-border-color: transparent;
-                                              -fx-font-size: 14px;
-                                              -fx-text-fill: #1a3a4a;
-                                              -fx-prompt-text-fill: #aac4cf;"/>
+                                       style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a; -fx-prompt-text-fill: #aac4cf;"/>
                         <TextField fx:id="passwordVisible"
                                    visible="false" managed="false"
                                    HBox.hgrow="ALWAYS"
-                                   style="-fx-background-color: transparent;
-                                          -fx-border-color: transparent;
-                                          -fx-font-size: 14px;
-                                          -fx-text-fill: #1a3a4a;"/>
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a;"/>
                         <Button fx:id="eyeBtn1" text="👁"
                                 onAction="#togglePassword"
-                                style="-fx-background-color: transparent;
-                                       -fx-border-color: transparent;
-                                       -fx-cursor: hand;
-                                       -fx-font-size: 15px;
-                                       -fx-padding: 0;"/>
+                                style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-cursor: hand; -fx-font-size: 15px; -fx-padding: 0;"/>
                     </HBox>
                 </VBox>
 
@@ -144,33 +110,19 @@
                     <Label text="Confirm Password"
                            style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                     <HBox alignment="CENTER_LEFT" spacing="10"
-                          style="-fx-background-color: white;
-                                 -fx-background-radius: 10;
-                                 -fx-padding: 0 14 0 14;"
-                          prefHeight="48" prefWidth="400">
-
+                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-border-color: #cbd5e1; -fx-border-radius: 12;"
+                          prefHeight="50" prefWidth="400">
                         <PasswordField fx:id="confirmPasswordField"
                                        promptText="••••••••"
                                        HBox.hgrow="ALWAYS"
-                                       style="-fx-background-color: transparent;
-                                              -fx-border-color: transparent;
-                                              -fx-font-size: 14px;
-                                              -fx-text-fill: #1a3a4a;
-                                              -fx-prompt-text-fill: #aac4cf;"/>
+                                       style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a; -fx-prompt-text-fill: #aac4cf;"/>
                         <TextField fx:id="confirmPasswordVisible"
                                    visible="false" managed="false"
                                    HBox.hgrow="ALWAYS"
-                                   style="-fx-background-color: transparent;
-                                          -fx-border-color: transparent;
-                                          -fx-font-size: 14px;
-                                          -fx-text-fill: #1a3a4a;"/>
+                                   style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #1a3a4a;"/>
                         <Button fx:id="eyeBtn2" text="👁"
                                 onAction="#toggleConfirmPassword"
-                                style="-fx-background-color: transparent;
-                                       -fx-border-color: transparent;
-                                       -fx-cursor: hand;
-                                       -fx-font-size: 15px;
-                                       -fx-padding: 0;"/>
+                                style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-cursor: hand; -fx-font-size: 15px; -fx-padding: 0;"/>
                     </HBox>
                 </VBox>
 
@@ -184,22 +136,12 @@
                                style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                         <Button text="terms &amp; conditions"
                                 onAction="#handleTerms"
-                                style="-fx-background-color: transparent;
-                                       -fx-text-fill: #7dd8f0;
-                                       -fx-font-size: 13px;
-                                       -fx-cursor: hand;
-                                       -fx-border-color: transparent;
-                                       -fx-padding: 0;"/>
+                                style="-fx-background-color: transparent; -fx-text-fill: #7dd8f0; -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: transparent; -fx-padding: 0;"/>
                         <Label text="and"
                                style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                         <Button text="privacy policy"
                                 onAction="#handlePrivacy"
-                                style="-fx-background-color: transparent;
-                                       -fx-text-fill: #7dd8f0;
-                                       -fx-font-size: 13px;
-                                       -fx-cursor: hand;
-                                       -fx-border-color: transparent;
-                                       -fx-padding: 0;"/>
+                                style="-fx-background-color: transparent; -fx-text-fill: #7dd8f0; -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: transparent; -fx-padding: 0;"/>
                     </HBox>
                 </HBox>
 
@@ -208,13 +150,7 @@
                 <Button fx:id="registerButton" text="Create an account"
                         prefWidth="400" prefHeight="52"
                         onAction="#handleRegister"
-                        style="-fx-background-color: #7dd8f0;
-                               -fx-text-fill: #1a3a4a;
-                               -fx-font-size: 16px;
-                               -fx-font-weight: bold;
-                               -fx-background-radius: 28;
-                               -fx-cursor: hand;
-                               -fx-border-color: transparent;"/>
+                        style="-fx-background-color: #7dd8f0; -fx-text-fill: #1a3a4a; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 28; -fx-cursor: hand; -fx-border-color: transparent;"/>
 
                 <Region prefHeight="16"/>
 
@@ -223,13 +159,7 @@
                            style="-fx-text-fill: #b0c8d4; -fx-font-size: 13px;"/>
                     <Button fx:id="loginLink" text="Login"
                             onAction="#handleBackToLogin"
-                            style="-fx-background-color: transparent;
-                                   -fx-text-fill: #7dd8f0;
-                                   -fx-font-size: 13px;
-                                   -fx-font-weight: bold;
-                                   -fx-cursor: hand;
-                                   -fx-border-color: transparent;
-                                   -fx-padding: 0;"/>
+                            style="-fx-background-color: transparent; -fx-text-fill: #7dd8f0; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-border-color: transparent; -fx-padding: 0;"/>
                 </HBox>
             </VBox>
         </ScrollPane>
