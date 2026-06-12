@@ -4,22 +4,29 @@ import com.zenith.frontend.api.AlertHelper;
 import com.zenith.frontend.api.ApiClient;
 import com.zenith.frontend.api.ApiException;
 import com.zenith.frontend.api.SessionManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Region;
 
 public class ForgotPasswordController {
 
     @FXML private Label         emailLabel;
+    @FXML private Label         errorMessageLabel;
+    @FXML private Region        errorSpacer;
+
     @FXML private PasswordField newPasswordField;
     @FXML private TextField     newPasswordVisible;
     @FXML private Button        eyeBtn1;
+
     @FXML private PasswordField confirmPasswordField;
     @FXML private TextField     confirmPasswordVisible;
     @FXML private Button        eyeBtn2;
+
     @FXML private Button        backButton;
     @FXML private Button        createButton;
 
@@ -30,10 +37,25 @@ public class ForgotPasswordController {
     private void initialize() {
         String email = SessionManager.getResetEmail();
         if (email != null && !email.isBlank()) {
-            emailLabel.setText("Reset password untuk: " + email);
         } else {
-            emailLabel.setText("Email reset tidak ditemukan. Kembali ke login dan coba lagi.");
+            showError("Email reset tidak ditemukan. Silakan kembali ke login.");
         }
+    }
+
+    private void showError(String message) {
+        errorMessageLabel.setText("⚠️ " + message);
+        errorMessageLabel.setVisible(true);
+        errorMessageLabel.setManaged(true);
+        errorSpacer.setVisible(true);
+        errorSpacer.setManaged(true);
+    }
+
+    private void clearError() {
+        errorMessageLabel.setText("");
+        errorMessageLabel.setVisible(false);
+        errorMessageLabel.setManaged(false);
+        errorSpacer.setVisible(false);
+        errorSpacer.setManaged(false);
     }
 
     @FXML
@@ -70,6 +92,8 @@ public class ForgotPasswordController {
 
     @FXML
     private void handleCreatePassword() {
+        clearError();
+
         String email = SessionManager.getResetEmail();
         String password = newPasswordShown
                 ? newPasswordVisible.getText()
@@ -79,19 +103,19 @@ public class ForgotPasswordController {
                 : confirmPasswordField.getText();
 
         if (email == null || email.isBlank()) {
-            AlertHelper.showError("Email reset tidak ditemukan.");
+            showError("Sesi telah habis. Silakan kembali ke halaman login.");
             return;
         }
         if (password.isEmpty() || confirm.isEmpty()) {
-            AlertHelper.showError("Semua field wajib diisi.");
+            showError("Semua field wajib diisi.");
             return;
         }
         if (!password.equals(confirm)) {
-            AlertHelper.showError("Password tidak cocok.");
+            showError("Password dan konfirmasi tidak cocok.");
             return;
         }
         if (password.length() < 6) {
-            AlertHelper.showError("Password minimal 6 karakter.");
+            showError("Password harus memiliki minimal 6 karakter.");
             return;
         }
 
@@ -101,15 +125,18 @@ public class ForgotPasswordController {
         new Thread(() -> {
             try {
                 ApiClient.resetPassword(email, password);
-                javafx.application.Platform.runLater(() -> {
+                Platform.runLater(() -> {
                     createButton.setDisable(false);
                     SessionManager.clearResetEmail();
-                    AlertHelper.showInfo("Password berhasil diperbarui.");
+
+                    AlertHelper.showInfo("Password berhasil diperbarui! Silakan login.");
                     SceneNavigator.navigateWithAnimation("/login.fxml", root, -60);
                 });
             } catch (ApiException ex) {
-                javafx.application.Platform.runLater(() -> createButton.setDisable(false));
-                AlertHelper.showError(ex.getMessage());
+                Platform.runLater(() -> {
+                    createButton.setDisable(false);
+                    showError(ex.getMessage());
+                });
             }
         }).start();
     }

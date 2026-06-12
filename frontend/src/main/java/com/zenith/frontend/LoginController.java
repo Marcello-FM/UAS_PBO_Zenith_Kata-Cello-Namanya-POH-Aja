@@ -5,18 +5,14 @@ import com.zenith.frontend.api.ApiClient;
 import com.zenith.frontend.api.ApiException;
 import com.zenith.frontend.api.AuthResponse;
 import com.zenith.frontend.api.SessionManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-
-import java.util.Optional;
+import javafx.scene.layout.Region;
 
 public class LoginController {
 
@@ -25,8 +21,32 @@ public class LoginController {
     @FXML private TextField     passwordVisible;
     @FXML private Button        eyeButton;
     @FXML private Button        loginButton;
+    @FXML private Label         errorMessageLabel;
+    @FXML private Region        errorSpacer;
 
     private boolean passwordShown = false;
+
+    private void showError(String message) {
+        errorMessageLabel.setText("⚠️ " + message);
+        errorMessageLabel.setVisible(true);
+        errorMessageLabel.setManaged(true);
+        if (errorSpacer != null) {
+            errorSpacer.setVisible(true);
+            errorSpacer.setManaged(true);
+        }
+    }
+
+    private void clearError() {
+        if (errorMessageLabel != null) {
+            errorMessageLabel.setText("");
+            errorMessageLabel.setVisible(false);
+            errorMessageLabel.setManaged(false);
+        }
+        if (errorSpacer != null) {
+            errorSpacer.setVisible(false);
+            errorSpacer.setManaged(false);
+        }
+    }
 
     @FXML
     private void togglePasswordVisibility() {
@@ -46,13 +66,15 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
+        clearError();
+
         String email    = emailField.getText().trim();
         String password = passwordShown
                 ? passwordVisible.getText()
                 : passwordField.getText();
 
         if (email.isEmpty() || password.isEmpty()) {
-            AlertHelper.showError("Email dan password wajib diisi.");
+            showError("Email dan password wajib diisi.");
             return;
         }
 
@@ -68,14 +90,14 @@ public class LoginController {
                         response.getFullName(),
                         response.getEmail());
 
-                javafx.application.Platform.runLater(() -> {
+                Platform.runLater(() -> {
                     loginButton.setDisable(false);
                     SceneNavigator.navigateWithAnimation("/dashboard.fxml", root, 60);
                 });
             } catch (ApiException ex) {
-                javafx.application.Platform.runLater(() -> {
+                Platform.runLater(() -> {
                     loginButton.setDisable(false);
-                    AlertHelper.showError(ex.getMessage());
+                    showError(ex.getMessage());
                 });
             }
         }).start();
@@ -83,18 +105,17 @@ public class LoginController {
 
     @FXML
     private void handleForgotPassword() {
+        clearError();
         String email = emailField.getText().trim();
         if (email.isEmpty()) {
-            AlertHelper.showError("Masukkan email terlebih dahulu.");
+            showError("Masukkan email Anda di atas terlebih dahulu untuk reset password.");
             return;
         }
 
         SessionManager.setResetEmail(email);
-
         Parent root = loginButton.getScene().getRoot();
         SceneNavigator.navigateWithAnimation("/forgot_password.fxml", root, 60);
     }
-
 
     @FXML
     private void handleRegister() {

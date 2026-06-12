@@ -2,7 +2,9 @@ package com.zenith.frontend.api;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
@@ -35,6 +37,9 @@ public final class AlertHelper {
         alert.setTitle("Zenith");
         alert.setHeaderText(null);
         alert.setContentText(message);
+
+        styleAlert(alert);
+
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
@@ -69,6 +74,39 @@ public final class AlertHelper {
         alert.setTitle("Zenith");
         alert.setHeaderText(null);
         alert.setContentText(message);
+
+        styleAlert(alert);
+
         alert.showAndWait();
+    }
+
+    private static void styleAlert(Alert alert) {
+        DialogPane dialogPane = alert.getDialogPane();
+
+        dialogPane.setStyle("-fx-background-color: #1a3a4a; " +
+                "-fx-border-color: #142e3e; " +
+                "-fx-border-width: 2px;");
+
+        javafx.scene.Node contentText = dialogPane.lookup(".content.label");
+        if (contentText != null) {
+            contentText.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
+        }
+
+        javafx.scene.Node headerText = dialogPane.lookup(".header-panel");
+        if (headerText != null) {
+            headerText.setStyle("-fx-background-color: #142e3e;");
+        }
+
+        for (ButtonType buttonType : alert.getButtonTypes()) {
+            Button button = (Button) dialogPane.lookupButton(buttonType);
+            if (button != null) {
+                button.setStyle("-fx-background-color: #87CEFA; " +
+                        "-fx-text-fill: #1a3a4a; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-cursor: hand; " +
+                        "-fx-padding: 6 20 6 20; " +
+                        "-fx-background-radius: 15;");
+            }
+        }
     }
 }
