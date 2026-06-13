@@ -30,4 +30,4 @@ Aplikasi ini terdiri dari dua bagian (Backend dan Frontend) yang harus dijalanka
    - `mvn javafx:run`
 
 ## Link Video Presentasi
-[MASUKKAN LINK YOUTUBE DI SINI]
+https://youtu.be/uKTf-3m4lJA
